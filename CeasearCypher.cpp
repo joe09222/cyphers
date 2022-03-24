@@ -6,11 +6,10 @@ using namespace std;
 void toLower( string& msg );
 string cesarCypher( string msg, int shiftSize );
 string cesarDeCypher( string msg, int shiftSize );
+bool isAlphabet( char letter );
 
 
 int main() {
-
-
 
 }
 
@@ -35,13 +34,18 @@ string cesarCypher( string msg, int shiftSize ){
 
     for( int i = 0; i < msg.length() ;i++){
         int letterIndex = int(msg[i]);
-        if( letterIndex - shiftSize < 97){
-            int newLetterIndex = (letterIndex - shiftSize + 26);
-            cypherdMsg += char( newLetterIndex );
+        if(isAlphabet(msg[i])){
+            if( letterIndex - shiftSize < 97){
+                int newLetterIndex = (letterIndex - shiftSize + 26);
+                cypherdMsg += char( newLetterIndex );
+            }else{
+                int newLetterIndex = letterIndex - shiftSize;
+                cypherdMsg += char( newLetterIndex );
+            }
         }else{
-            int newLetterIndex = letterIndex - shiftSize;
-            cypherdMsg += char( newLetterIndex );
+                cypherdMsg += msg[i];
         }
+
 
     }
 
@@ -75,3 +79,12 @@ string cesarDeCypher( string msg, int shiftSize ){
     return originalMsg;
 
 }
+
+
+
+bool isAlphabet( char letter ){
+    if((letter >= 'a' && letter <= 'z') || (letter >= 'A' && letter <= 'Z'))
+        return true;
+    return false;
+}
+
