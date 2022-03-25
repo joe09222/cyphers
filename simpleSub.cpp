@@ -4,7 +4,6 @@
 using namespace std;
 
 
-void Print( char arr[], int arr_size );
 string cypher( string msg, string keyword );
 string deCypher( string msg , string keyword);
 int getCharIndex( char letter, char arr[]);
